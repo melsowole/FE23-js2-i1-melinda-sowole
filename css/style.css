@@ -1,0 +1,56 @@
+.avatar{
+    --color: pink;
+    --light: pink;
+
+    height: 100px;
+    width: 100px;
+    background-color: var(--color);
+}
+
+/* AVATAR STATES */
+.take-damage, .attack, .heal, .change-stats{
+    animation-duration: 0.2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.take-damage{
+    animation-name: takeDamage;
+}
+
+.attack{
+    animation-name: attack;
+
+}
+
+.heal{
+    animation-name: heal;
+
+}
+
+.change-stats{
+    animation-name: changeStats;
+
+}
+
+@keyframes takeDamage {
+    from{background-color: red;}
+    to{background-color: pink;}
+}
+
+@keyframes heal {
+    from{background-color: green;}
+    to{background-color: greenyellow;}
+}
+
+@keyframes attack {
+    from{background-color: blue;}
+    to{background-color: lightskyblue;}
+}
+
+
+@keyframes changeStats {
+    from{background-color: rebeccapurple;}
+    to{background-color:lightslategray;}
+}
+
