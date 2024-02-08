@@ -8,6 +8,7 @@ export default class Avatar {
   #avatarEl;
 
   constructor(name, health) {
+    console.log("hello");
     this.#createGUI(name, health);
   }
 
