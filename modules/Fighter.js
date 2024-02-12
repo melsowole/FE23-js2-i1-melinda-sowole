@@ -25,7 +25,7 @@ export default class Fighter {
   }
 
   heal(heal) {
-    this.setAvatarState("heal");
+    this.updateGUI.avatarFlashState("heal");
     this.health = this.health + heal;
   }
 
