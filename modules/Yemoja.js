@@ -1,8 +1,9 @@
-import Fighter from "./Fighter.js";
+import Avatar from "./Avatar.js";
+
 import OceanicSurge from "./abilities/OceanicSurge.js";
 
-export default class Yemoja extends Fighter {
-  constructor() {
+export default class Yemoja extends Avatar {
+  constructor(id) {
     // base stats
     const name = "Yemoja";
     const health = 100;
@@ -11,6 +12,6 @@ export default class Yemoja extends Fighter {
     const speed = 1;
     const abilities = [new OceanicSurge()];
 
-    super(name, health, abilities);
+    super(id, name, health, abilities);
   }
 }
