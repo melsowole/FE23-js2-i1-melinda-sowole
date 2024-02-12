@@ -1,7 +1,9 @@
 import Fighter from "./modules/Fighter.js";
 import Yemoja from "./modules/Yemoja.js";
 
-const player1 = new Yemoja();
+const p1 = new Yemoja();
+const p2 = new Yemoja();
 
-player1.abilities[0].use();
+// p1.perform(0, p1, p2);
+
 
