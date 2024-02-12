@@ -64,6 +64,19 @@ export default class Fighter {
     this._health = val < 0 ? 0 : val > this.baseHealth ? this.baseHealth : val;
   }
 
+  // opponent
+  get opponent() {
+    return this._opponent;
+  }
+
+  set opponent(val) {
+    if (typeof val !== "object" && val == this) {
+      throw new Error("Opponent must be a fighter and cannot be the self");
+    }
+
+    this._opponent = val;
+  }
+
   // helpers
   _validatePropertyInput = (val, statName, propertyName) => {
     this._checkIfNumberGreaterThan0(val, statName);
