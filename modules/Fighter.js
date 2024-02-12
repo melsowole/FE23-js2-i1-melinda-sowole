@@ -1,22 +1,27 @@
 export default class Fighter {
-  constructor(id, name, health, abilities) {
+  constructor(id, { name, health, atk, speed, defense, abilities }) {
     this.id = id;
     this.name = name;
     this.baseHealth = health;
     this.health = this.baseHealth;
+    this.atk = atk;
+    this.speed = speed;
+    this.defense = defense;
     this.abilities = abilities;
   }
 
   attack(damage, reciever) {
+    // add dmg boost
     this.updateGUI.avatarFlashState("attack");
-    reciever.takeDamage(damage);
+    reciever.takeDamage(damage * this.atk);
   }
 
   takeDamage(damage) {
+    // add dmg negation
     console.log(this.name, "took", damage, "damage");
     this.updateGUI.avatarFlashState("take-damage");
 
-    this.health = this.health - damage;
+    this.health = this.health - damage * this.defense;
 
     if (this.health == 0) {
       this.die();
@@ -78,6 +83,34 @@ export default class Fighter {
     if (this.updateGUI) {
       this.updateGUI.health(this._health);
     }
+  }
+
+  // speed
+  get speed() {
+    return this._speed;
+  }
+
+  set speed(val) {
+    this._speed = val;
+  }
+
+  // atk
+
+  get atk() {
+    return this._atk;
+  }
+
+  set atk(val) {
+    this._atk = val;
+  }
+
+  // defense
+  get defense() {
+    return this._defense;
+  }
+
+  set defense(val) {
+    this._defense = val;
   }
 
   // opponent

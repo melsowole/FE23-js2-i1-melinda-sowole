@@ -6,27 +6,10 @@ export default class Avatar extends Fighter {
   #healthEl;
   #avatarEl;
 
-  constructor(id, name, health, abilities) {
-    super(id, name, health, abilities);
+  constructor(id, character) {
+    super(id, character);
     this.#createGUI();
   }
-
-  // takeDamage(health) {
-  //   this.#setHealth(health);
-  //   this.#setAvatarState("take-damage");
-  // }
-
-  // attack() {
-  //   this.#setAvatarState("attack");
-  // }
-
-  // heal() {
-  //   this.#setAvatarState("heal");
-  // }
-
-  // changeStats() {
-  //   this.#setAvatarState("change-stats");
-  // }
 
   #createGUI() {
     const wrapperEl = createIn(document.body, "div", "fighter");
