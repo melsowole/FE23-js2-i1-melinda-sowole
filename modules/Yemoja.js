@@ -7,19 +7,20 @@ import MothersWrath from "./abilities/MothersWrath.js";
 
 export default class Yemoja extends Avatar {
   constructor(id) {
-    // base stats
-    const name = "Yemoja";
-    const health = 100;
-    const defense = 1;
-    const atk = 1;
-    const speed = 1;
-    const abilities = [
-      new OceanicSurge(),
-      new SoothingWaters(),
-      new WaveManipulation(),
-      new MothersWrath(),
-    ];
+    const YEMOJA = {
+      name: "Yemoja",
+      health: 100,
+      defense: 1,
+      atk: 1,
+      speed: 1,
+      abilities: [
+        new OceanicSurge(),
+        new SoothingWaters(),
+        new WaveManipulation(),
+        new MothersWrath(),
+      ],
+    };
 
-    super(id, name, health, abilities);
+    super(id, YEMOJA);
   }
 }
