@@ -1,24 +1,19 @@
-import Avatar from "./Avatar.js";
-
 export default class Fighter {
-  constructor(name, health, abilities) {
+  constructor(id, name, health, abilities) {
+    this.id = id;
     this.name = name;
     this.baseHealth = health;
     this.health = this.baseHealth;
     this.abilities = abilities;
-
-    this.avatar = new Avatar(this);
   }
 
   attack(damage, reciever) {
     console.log(this.name, "dealt", damage, "damage");
-    this.avatar.attack();
     reciever.takeDamage(damage);
   }
 
   takeDamage(damage) {
     console.log(this.name, "took", damage, "damage");
-    this.avatar.takeDamage(damage);
 
     this.health = this.health - damage;
 
@@ -29,6 +24,16 @@ export default class Fighter {
 
   die() {
     console.log(this.name, "died");
+  }
+
+  //id
+
+  get id() {
+    return this._id;
+  }
+
+  set id(val) {
+    return (this._id = val);
   }
 
   // name

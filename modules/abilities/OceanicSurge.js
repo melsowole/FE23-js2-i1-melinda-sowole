@@ -8,8 +8,8 @@ export default class OceanicSurge extends Ability {
     this.baseDmg = 50;
   }
 
-  use() {
-    caster.attack(target);
-    console.log("used", this.name);
+  use(fighter) {
+    console.log(`${fighter.name} (${fighter.id}) used ${this.name}`);
+    fighter.attack(this.baseDmg, fighter.opponent);
   }
 }
