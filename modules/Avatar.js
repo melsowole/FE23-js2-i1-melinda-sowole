@@ -39,14 +39,16 @@ export default class Avatar extends Fighter {
 
     this.#avatarEl = createIn(wrapperEl, "div", "avatar");
 
-    const abilitiesWrapperEl = createIn(wrapperEl, "div", "abilities");
+    this.abilitiesWrapperEl = createIn(wrapperEl, "div", "abilities");
     this.abilities.forEach((ability) => {
       const button = createIn(
-        abilitiesWrapperEl,
+        this.abilitiesWrapperEl,
         "button",
         "ability",
         ability.name
       );
+
+      button.disabled = true;
 
       button.addEventListener("click", () => {
         ability.use(this);

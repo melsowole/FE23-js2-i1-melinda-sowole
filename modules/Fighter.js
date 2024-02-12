@@ -8,7 +8,6 @@ export default class Fighter {
   }
 
   attack(damage, reciever) {
-    console.log(this.name, "dealt", damage, "damage");
     this.updateGUI.avatarFlashState("attack");
     reciever.takeDamage(damage);
   }
