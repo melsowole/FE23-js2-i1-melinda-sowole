@@ -9,11 +9,13 @@ export default class Fighter {
 
   attack(damage, reciever) {
     console.log(this.name, "dealt", damage, "damage");
+    this.updateGUI.avatarFlashState("attack");
     reciever.takeDamage(damage);
   }
 
   takeDamage(damage) {
     console.log(this.name, "took", damage, "damage");
+    this.updateGUI.avatarFlashState("take-damage");
 
     this.health = this.health - damage;
 
@@ -22,8 +24,14 @@ export default class Fighter {
     }
   }
 
+  heal(heal) {
+    this.setAvatarState("heal");
+    this.health = this.health + heal;
+  }
+
   die() {
     console.log(this.name, "died");
+    this.updateGUI.avatarState("death");
   }
 
   //id
@@ -67,6 +75,10 @@ export default class Fighter {
 
   set health(val) {
     this._health = val < 0 ? 0 : val > this.baseHealth ? this.baseHealth : val;
+
+    if (this.updateGUI) {
+      this.updateGUI.health(this._health);
+    }
   }
 
   // opponent

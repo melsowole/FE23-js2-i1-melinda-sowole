@@ -28,6 +28,10 @@
 
 }
 
+.death{
+    background-color: black;
+}
+
 .change-stats{
     animation-name: changeStats;
 

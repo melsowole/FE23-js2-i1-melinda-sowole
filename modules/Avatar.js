@@ -54,14 +54,18 @@ export default class Avatar extends Fighter {
     });
   }
 
-  // #setHealth(health) {
-  //   this.#healthEl.textContent = health;
-  // }
-
-  // #setAvatarState(state) {
-  //   this.#avatarEl.classList.add(state);
-  //   setTimeout(() => {
-  //     this.#avatarEl.classList.remove(state);
-  //   }, 1000);
-  // }
+  updateGUI = {
+    health: (health) => {
+      this.#healthEl.textContent = health;
+    },
+    avatarFlashState: (state) => {
+      this.#avatarEl.classList.add(state);
+      setTimeout(() => {
+        this.#avatarEl.classList.remove(state);
+      }, 1000);
+    },
+    avatarState: (state) => {
+      this.#avatarEl.classList.add(state);
+    },
+  };
 }
