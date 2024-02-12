@@ -9,7 +9,7 @@ export default class Yemoja extends Fighter {
     const defense = 1;
     const atk = 1;
     const speed = 1;
-    const abilities = [new OceanicSurge(), new OceanicSurge()];
+    const abilities = [new OceanicSurge()];
 
     super(name, health, abilities);
   }
