@@ -7,7 +7,7 @@ export default class OceanicSurge extends Ability {
     const description =
       "Yemoja summons a powerful tidal wave that crashes into her opponent.";
     super(name, description);
-    this.#baseDmg = 15;
+    this.#baseDmg = 65;
   }
 
   use(fighter) {
