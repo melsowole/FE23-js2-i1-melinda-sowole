@@ -1,15 +1,12 @@
 import { create, createIn } from "./dom.js";
 
 export default class Avatar {
-  #wrapperEl;
-  #nameEl;
-  #healthWrapperEl;
   #healthEl;
   #avatarEl;
 
-  constructor(name, health) {
+  constructor(cls) {
     console.log("hello");
-    this.#createGUI(name, health);
+    this.#createGUI(cls);
   }
 
   takeDamage(health) {
@@ -29,16 +26,30 @@ export default class Avatar {
     this.#setAvatarState("change-stats");
   }
 
-  #createGUI(name, health) {
-    this.#wrapperEl = createIn(document.body, "div", "fighter");
+  #createGUI(cls) {
+    const wrapperEl = createIn(document.body, "div", "fighter");
 
-    this.#nameEl = createIn(this.#wrapperEl, "p", "name", name);
+    createIn(wrapperEl, "p", "name", cls.name);
 
-    this.#healthWrapperEl = createIn(this.#wrapperEl, "p", "health-wrapper");
-    this.#healthEl = createIn(this.#healthWrapperEl, "span", "health", health);
-    createIn(this.#healthWrapperEl, "span", "", " / " + health);
+    const healthWrapperEl = createIn(wrapperEl, "p", "health-wrapper");
+    this.#healthEl = createIn(healthWrapperEl, "span", "health", cls.health);
+    createIn(healthWrapperEl, "span", "", " / " + cls.health);
 
-    this.#avatarEl = createIn(this.#wrapperEl, "div", "avatar");
+    this.#avatarEl = createIn(wrapperEl, "div", "avatar");
+
+    const abilitiesWrapperEl = createIn(wrapperEl, "div", "abilities");
+    cls.abilities.forEach((ability) => {
+      const button = createIn(
+        abilitiesWrapperEl,
+        "button",
+        "ability",
+        ability.name
+      );
+
+      button.addEventListener("click", () => {
+        ability.use();
+      });
+    });
   }
 
   #setHealth(health) {
