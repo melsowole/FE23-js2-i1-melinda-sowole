@@ -1,9 +1,9 @@
 import Avatar from "../Avatar.js";
 
-import OceanicSurge from "../abilities/OceanicSurge.js";
-import SoothingWaters from "../abilities/SoothingWaters.js";
-import WaveManipulation from "../abilities/WaveManipulation.js";
-import MothersWrath from "../abilities/MothersWrath.js";
+import DoubleChop from "../abilities/DoubleChop.js";
+import Justice from "../abilities/Justice.js";
+import Intimidate from "../abilities/Intimidate.js";
+import Bloodshot from "../abilities/Bloodshot.js";
 
 export default class Shango extends Avatar {
   constructor(id) {
@@ -14,10 +14,10 @@ export default class Shango extends Avatar {
       atk: 1,
       speed: 1.1,
       abilities: [
-        new OceanicSurge(),
-        new SoothingWaters(),
-        new WaveManipulation(),
-        new MothersWrath(),
+        new DoubleChop(),
+        new Justice(),
+        new Intimidate(),
+        new Bloodshot(),
       ],
     };
 

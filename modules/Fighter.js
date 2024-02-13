@@ -28,6 +28,14 @@ export default class Fighter {
     }
   }
 
+  changeStats(stats) {
+    for (const statKey in stats) {
+      if (Object.hasOwnProperty.call(object, key)) {
+        const element = object[key];
+      }
+    }
+  }
+
   heal(heal) {
     this.updateGUI.avatarFlashState("heal");
     this.health = this.health + heal;
