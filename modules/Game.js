@@ -93,7 +93,7 @@ export default class Game {
   }
 
   #getPlayerTurnOrder() {
-    return this.players.sort((x, y) => x.speed > y.speed);
+    return this.players.sort((x, y) => x.speed < y.speed);
   }
 
   #getWinner() {
