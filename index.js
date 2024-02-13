@@ -1,10 +1,3 @@
-import Yemoja from "./modules/characters/Yemoja.js";
-import Shango from "./modules/characters/Shango.js";
-import Game from "./modules/Game.js";
+import { Orisha } from "./modules/Orisha.js";
 
-const game = new Game();
-
-// set players
-game.players = [new Yemoja("p1"), new Shango("p2")];
-
-game.start();
+const game = new Orisha();
