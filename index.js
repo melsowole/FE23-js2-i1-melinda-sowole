@@ -5,9 +5,11 @@ import Game from "./modules/Game.js";
 const game = new Game();
 
 // set players
-game.players = [new Yemoja("p1"), new Yemoja("p2")];
+// game.players = [new Yemoja("p1"), new Yemoja("p2")];
 
-game.start();
+// game.start();
+
+game.preGame()
 
 
 
