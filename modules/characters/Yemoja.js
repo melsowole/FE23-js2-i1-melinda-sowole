@@ -1,9 +1,9 @@
-import Avatar from "./Avatar.js";
+import Avatar from "../Avatar.js";
 
-import OceanicSurge from "./abilities/OceanicSurge.js";
-import SoothingWaters from "./abilities/SoothingWaters.js";
-import WaveManipulation from "./abilities/WaveManipulation.js";
-import MothersWrath from "./abilities/MothersWrath.js";
+import OceanicSurge from "../abilities/OceanicSurge.js";
+import SoothingWaters from "../abilities/SoothingWaters.js";
+import WaveManipulation from "../abilities/WaveManipulation.js";
+import MothersWrath from "../abilities/MothersWrath.js";
 
 export default class Yemoja extends Avatar {
   constructor(id) {

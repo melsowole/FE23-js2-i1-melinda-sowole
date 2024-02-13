@@ -1,9 +1,9 @@
 import Interface from "./Interface.js";
-import Yemoja from "./Yemoja.js";
+import Yemoja from "./characters/Yemoja.js";
 
 export class Orisha extends Interface {
   constructor() {
-    const characters = ["Yemoja", "Yemoja", "Yemoja"];
+    const characters = ["Yemoja", "Yemoja"];
     super(characters);
   }
 }
