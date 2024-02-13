@@ -1,9 +1,11 @@
 export default class Game {
   #players;
-  #round;
-  constructor() {
-    this.#round = 0;
+  #characters;
+  constructor(characters) {
+    this.characters = characters;
   }
+
+  // players
 
   get players() {
     return this.#players;
@@ -18,6 +20,24 @@ export default class Game {
 
     this.#setOpponents();
   }
+
+  /// characters
+
+  get characters() {
+    return this.#characters;
+  }
+
+  set characters(val) {
+    if (!(val instanceof Array) || val.length <= 0) {
+      throw new Error(
+        "Characters must be an array of several class characters"
+      );
+    } else {
+      this.#characters = val;
+    }
+  }
+
+  ///
 
   async start() {
     while (this.players[0].health > 0 && this.players[1].health > 0) {

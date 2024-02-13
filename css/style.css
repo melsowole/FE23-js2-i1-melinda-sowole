@@ -7,6 +7,10 @@
     background-color: var(--color);
 }
 
+.character-card#p1, .character-card#p2{
+    background-color: pink;
+}
+
 /* AVATAR STATES */
 .take-damage, .attack, .heal, .change-stats{
     animation-duration: 0.2s;
