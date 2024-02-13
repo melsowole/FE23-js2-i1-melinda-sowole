@@ -7,7 +7,7 @@ export default class SoothingWaters extends Ability {
     const description =
       "Yemoja releases healing waters to restore health to herself.";
     super(name, description);
-    this.#baseHeal = 10;
+    this.#baseHeal = 1.2;
   }
 
   use(fighter) {

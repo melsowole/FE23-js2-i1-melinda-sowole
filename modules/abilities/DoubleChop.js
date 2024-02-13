@@ -7,7 +7,7 @@ export default class DoubleChop extends Ability {
     const description =
       "Shango strikes his foe once with each side of his axe.";
     super(name, description);
-    this.#baseDmg = 50;
+    this.#baseDmg = 0.5;
   }
 
   use(fighter) {

@@ -9,7 +9,7 @@ export default class MothersWrath extends Ability {
       "Yemoja channels her maternal rage into a devastating attack, with a high miss-rate.";
     super(name, description);
     this.#missRate = 0.8;
-    this.#baseDmg = 50;
+    this.#baseDmg = 0.6;
   }
 
   use(fighter) {

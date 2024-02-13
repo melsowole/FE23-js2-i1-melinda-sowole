@@ -1,17 +1,18 @@
 import Ability from "../Ability.js";
 
-export default class OceanicSurge extends Ability {
+export default class DivineJudgement extends Ability {
   #baseDmg;
   constructor() {
-    const name = "Oceanic Surge";
+    const name = "Double Chop";
     const description =
-      "Yemoja summons a powerful tidal wave that crashes into her opponent.";
+      "Obatala unleashes a devastating strike, dealing medium damage with righteous fury.";
     super(name, description);
-    this.#baseDmg = 0.2;
+    this.#baseDmg = 0.5;
   }
 
   use(fighter) {
     console.log(`${fighter.name} (${fighter.id}) used ${this.name}`);
+
     fighter.attack(this.#baseDmg, fighter.opponent);
   }
 }

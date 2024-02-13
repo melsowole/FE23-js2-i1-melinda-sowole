@@ -24,7 +24,6 @@
 
 .attack{
     animation-name: attack;
-
 }
 
 .heal{
@@ -36,8 +35,12 @@
     background-color: black;
 }
 
-.change-stats{
-    animation-name: changeStats;
+.increase-stats{
+    animation-name: increaseStats;
+}
+
+.decrease-stats{
+    animation-name: decreaseStats;
 
 }
 
@@ -57,8 +60,14 @@
 }
 
 
-@keyframes changeStats {
+@keyframes increaseStats {
     from{background-color: rebeccapurple;}
     to{background-color:lightslategray;}
+}
+
+
+@keyframes dereaseStats {
+    from{background-color: rgb(48, 50, 188);}
+    to{background-color:rgb(139, 140, 233);}
 }
 
