@@ -1,0 +1,39 @@
+
+.game-screen{
+    background-color: purple;
+    display: flex;
+}
+
+.game-screen .avatar-container{
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: green;
+}
+
+.game-screen .p2 .fighter{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: right;
+}
+
+.game-screen .game-info{
+    width: 200px;
+    background-color: blue;
+}
+
+.game-screen .versus-text{
+    text-align: center;
+}
+
+.game-screen .message-box{
+    width: 100%;
+    height: 300px;
+    border: 1px solid var(--text);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: end;
+    overflow: hidden;
+}

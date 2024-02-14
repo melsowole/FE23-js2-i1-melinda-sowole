@@ -16,13 +16,13 @@ export default class Interface extends Game {
 }
 
 function preGameScreen(game) {
-  const container = createIn(document.body, "main", "character-selection");
+  const main = createIn(document.body, "main", "character-selection");
 
-  const title = createIn(container, "h1", "game-title", "Orisha");
+  const title = createIn(main, "h1", "game-title", "Orisha");
 
-  const h2 = createIn(container, "h2", "screen-title", "Character Select");
+  const h2 = createIn(main, "h2", "screen-title", "Character Select");
 
-  const playerSelectWrapper = createIn(container, "div", "selection-wrapper");
+  const playerSelectWrapper = createIn(main, "div", "selection-wrapper");
 
   playerSelectWrapper.append(
     characterSelectDOM(game, "Player 1", "p1"),
@@ -30,24 +30,14 @@ function preGameScreen(game) {
   );
 
   const startButton = createIn(
-    container,
+    main,
     "button",
     "start-game-button",
     "start game"
   );
 
   startButton.addEventListener("click", () => {
-    const p1Name = document.getElementById("p1").textContent;
-    const p2Name = document.getElementById("p2").textContent;
-
-    document.body.innerHTML = "";
-
-    const p1 = game.characterSelection.select(p1Name, "p1");
-    const p2 = game.characterSelection.select(p2Name, "p2");
-
-    game.players = [p1, p2];
-
-    game.start();
+    preGameScreenButtonClickHandler(game)
   });
 }
 
@@ -87,4 +77,35 @@ function characterCardDOM(characterName, playerId) {
   });
 
   return characterCard;
+}
+
+function preGameScreenButtonClickHandler(game){
+  // get selected characters
+  const p1Name = document.getElementById("p1").textContent;
+  const p2Name = document.getElementById("p2").textContent;
+
+  document.body.innerHTML = "";
+
+  // create new body structure
+  createGameScreen();
+
+  // create characters
+  const p1 = game.characterSelection.select(p1Name, "p1");
+  const p2 = game.characterSelection.select(p2Name, "p2");
+
+  game.players = [p1, p2];
+
+  game.start();
+}
+
+function createGameScreen(){
+  const main = createIn(document.body, "main", "game-screen");
+  
+  createIn(main, "div", ["p1","avatar-container"]);
+  const gameInfo = createIn(main, "div", "game-info");
+  createIn(main, "div", ["p2", "avatar-container"]);
+
+  createIn(gameInfo, "p", "versus-text", "vs");
+  createIn(gameInfo, "div", "message-box");
+
 }
