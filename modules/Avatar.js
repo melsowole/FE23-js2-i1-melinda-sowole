@@ -12,7 +12,11 @@ export default class Avatar extends Fighter {
   }
 
   #createGUI() {
-    const wrapperEl = createIn(document.body, "div", "fighter");
+    const wrapperEl = createIn(
+      document.querySelector(`.${this.id}.avatar-container`),
+      "div",
+      "fighter"
+    );
 
     createIn(wrapperEl, "p", "name", this.name);
 

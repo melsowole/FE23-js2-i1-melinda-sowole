@@ -1,0 +1,42 @@
+.character-selection .game-title{
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+.character-selection .selection-wrapper{
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+}
+
+.character-selection .selection{
+    flex-grow: 1;
+}
+
+.character-selection .selection.p2 h4{
+    text-align: right;
+}
+
+.character-selection .character-card{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--text);
+    cursor: pointer;
+}
+
+.character-selection .character-card p {
+    margin: 0;
+    padding: 0;
+}
+
+.character-selection .character-card#p1, 
+.character-selection .character-card#p2{
+    border-left: 1rem solid var(--text);
+}
+
+.start-game-button{
+    margin: auto;
+    margin-top: 2rem;
+    display: block;
+}
+
