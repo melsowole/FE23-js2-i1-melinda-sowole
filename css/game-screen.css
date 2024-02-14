@@ -45,7 +45,14 @@
     display: flex;
     flex-direction: column;
 
-    align-items: end;
+    justify-content: end;
     overflow: hidden;
+}
+
+.message{
+    display: block;
+    padding: 0.5rem;
+    font-size: small;
+    margin: 0;
 }
 

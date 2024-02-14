@@ -38,6 +38,10 @@ export default class Avatar extends Fighter {
       button.disabled = true;
 
       button.addEventListener("click", () => {
+        this.updateGUI.message(
+          `${this.name} (${this.id}) used ${ability.name}`
+        );
+
         ability.use(this);
       });
     });
@@ -56,5 +60,13 @@ export default class Avatar extends Fighter {
     avatarState: (state) => {
       this.#avatarEl.classList.add(state);
     },
+    message: (message) => {
+      const box = document.querySelector(".message-box")
+
+      box.append(create("p", "message", message));
+      box.scrollTop = box.scrollHeight
+    },
   };
 }
+
+
