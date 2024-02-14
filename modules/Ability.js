@@ -1,10 +1,11 @@
 import Stats from "./Stats.js";
+import { create } from "./dom.js";
 
 export default class Ability {
   #name;
   #description;
 
-  constructor(name, description, basePower) {
+  constructor(name, description) {
     this.name = name;
     this.description = description;
 
@@ -46,9 +47,10 @@ function propertyHasBeenSet(property) {
 }
 
 function capitalizeAndJoin(name) {
-  let words = name.split(" ");
-  let capitalizedWords = words.map(
+  const cleanedName = name.replace(/'/, ''); 
+  const words = cleanedName.split(" ");
+  const capitalizedWords = words.map(
     (word) => word.charAt(0).toUpperCase() + word.slice(1)
   );
-  return capitalizedWords.join("");
+  return capitalizedWords.join("").replace();
 }
