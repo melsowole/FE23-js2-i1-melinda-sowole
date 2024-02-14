@@ -60,11 +60,17 @@ export default class Game {
       this.#turnOfAPlayer(playerTurnOrder[0], resolve, reject);
     });
 
+    // quick fix to create separator in message box
+    playerTurnOrder[0].updateGUI.message("---");
+
     if (firstPlay) {
       const secondPlay = await new Promise((resolve) => {
         this.#turnOfAPlayer(playerTurnOrder[1], resolve);
       });
     }
+
+    // quick fix to create separator in message box
+    playerTurnOrder[0].updateGUI.message("---");
   }
 
   async #turnOfAPlayer(player, resolve, reject) {
