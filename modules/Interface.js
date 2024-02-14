@@ -5,76 +5,86 @@ import { create, createIn } from "./dom.js";
 export default class Interface extends Game {
   constructor(characters) {
     super(characters);
-    this.initialize();
     this.characterSelection = new CharacterSelection();
+    this.initialize();
   }
 
   initialize() {
-    this.createPreGameScreen();
+    preGameScreen(this);
   }
 
-  createPreGameScreen() {
-    const container = createIn(document.body, "main", "choose-character");
+}
 
-    const h1 = createIn(container, "h1", "", "Select your characters!");
+function preGameScreen(game) {
+  const container = createIn(document.body, "main", "character-selection");
 
-    const p1Select = this.characterSelect("Player 1", "p1");
-    const p2Select = this.characterSelect("Player 2", "p2");
+  const title = createIn(container, "h1", "game-title", "Orisha");
 
-    container.append(p1Select, p2Select);
+  const h2 = createIn(container, "h2", "screen-title", "Character Select");
 
-    const startButton = createIn(container, "button", "", "start game");
+  const playerSelectWrapper = createIn(container, "div", "selection-wrapper");
 
-    startButton.addEventListener("click", () => {
-      const p1Name = document.getElementById("p1").textContent;
-      const p2Name = document.getElementById("p2").textContent;
+  playerSelectWrapper.append(
+    characterSelectDOM(game, "Player 1", "p1"),
+    characterSelectDOM(game, "Player 2", "p2")
+  );
 
-      document.body.innerHTML = "";
+  const startButton = createIn(
+    container,
+    "button",
+    "start-game-button",
+    "start game"
+  );
 
-      const p1 = this.characterSelection.select(p1Name, "p1");
-      const p2 = this.characterSelection.select(p2Name, "p2");
+  startButton.addEventListener("click", () => {
+    const p1Name = document.getElementById("p1").textContent;
+    const p2Name = document.getElementById("p2").textContent;
 
-      this.players = [p1, p2];
+    document.body.innerHTML = "";
 
-      this.start();
-    });
-  }
+    const p1 = game.characterSelection.select(p1Name, "p1");
+    const p2 = game.characterSelection.select(p2Name, "p2");
 
-  characterSelect(playerName, playerId) {
-    const container = create("div");
+    game.players = [p1, p2];
 
-    const h2 = createIn(container, "h2", "", playerName);
+    game.start();
+  });
+}
 
-    const characterGrid = createIn(container, "div");
+function characterSelectDOM(game, playerName, playerId) {
+  const container = create("div", [playerId, "selection"]);
 
-    this.characters.forEach((character, i) => {
-      const card = this.characterCard(character, playerId);
+  const h2 = createIn(container, "h4", "", playerName);
 
-      characterGrid.append(card);
+  const characterGrid = createIn(container, "div", "character-grid");
 
-      if (i == 0) {
-        card.id = playerId;
-      }
-    });
+  game.characters.forEach((character, i) => {
+    const card = characterCardDOM(character, playerId);
 
-    return container;
-  }
+    characterGrid.append(card);
 
-  characterCard(characterName, playerId) {
-    const characterCard = create("div", "character-card");
+    if (i == 0) {
+      card.id = playerId;
+    }
+  });
 
-    const name = createIn(characterCard, "h3", "", characterName);
+  return container;
+}
 
-    characterCard.addEventListener("click", () => {
-      const prevSelectedCard = document.getElementById(playerId);
+function characterCardDOM(characterName, playerId) {
+  const characterCard = create("div", "character-card");
 
-      if (prevSelectedCard) {
-        prevSelectedCard.removeAttribute("id");
-      }
+  const name = createIn(characterCard, "p", "name-card", characterName);
 
-      characterCard.id = playerId;
-    });
+  characterCard.addEventListener("click", () => {
+    const prevSelectedCard = document.getElementById(playerId);
 
-    return characterCard;
-  }
+    if (prevSelectedCard) {
+      prevSelectedCard.removeAttribute("id");
+    }
+
+    characterCard.id = playerId;
+  });
+
+  return characterCard;
 }

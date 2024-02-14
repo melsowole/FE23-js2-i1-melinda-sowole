@@ -1,73 +1,39 @@
-.avatar{
-    --color: pink;
-    --light: pink;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-    height: 100px;
-    width: 100px;
-    background-color: var(--color);
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root{
+    --bg: rgb(14, 22, 10);
+    --text: white;
+    --col: rgb(45, 118, 57);
+    --col2: rgb(192, 248, 101);
+    --col3: rgb(245, 157, 68);
+
+    color: var(--text);
 }
 
-.character-card#p1, .character-card#p2{
-    background-color: pink;
+*{
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
-/* AVATAR STATES */
-.take-damage, .attack, .heal, .change-stats{
-    animation-duration: 0.2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+body{
+    background-color: var(--bg);
 }
 
-.take-damage{
-    animation-name: takeDamage;
+main{
+    max-width: 1200px;
+    margin: auto;
 }
 
-.attack{
-    animation-name: attack;
-}
-
-.heal{
-    animation-name: heal;
-
-}
-
-.death{
-    background-color: black;
-}
-
-.increase-stats{
-    animation-name: increaseStats;
-}
-
-.decrease-stats{
-    animation-name: decreaseStats;
-
-}
-
-@keyframes takeDamage {
-    from{background-color: red;}
-    to{background-color: pink;}
-}
-
-@keyframes heal {
-    from{background-color: green;}
-    to{background-color: greenyellow;}
-}
-
-@keyframes attack {
-    from{background-color: blue;}
-    to{background-color: lightskyblue;}
-}
-
-
-@keyframes increaseStats {
-    from{background-color: rebeccapurple;}
-    to{background-color:lightslategray;}
-}
-
-
-@keyframes dereaseStats {
-    from{background-color: rgb(48, 50, 188);}
-    to{background-color:rgb(139, 140, 233);}
+button{
+    background-color: var(--col);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--text);
+    padding: 1rem;
+    text-transform: capitalize;
+    cursor: pointer;
 }
 
