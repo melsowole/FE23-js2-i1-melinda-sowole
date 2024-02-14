@@ -20,6 +20,7 @@ export default class Fighter {
   }
 
   attack(damage, reciever) {
+    console.log(`${this.name} (${this.id}) dealt ${damage * this.atk} damage`);
     reciever.takeDamage(damage * this.atk);
   }
 
@@ -27,7 +28,7 @@ export default class Fighter {
     console.log(`${this.name} (${this.id}) took ${damage} damage`);
     this.updateGUI.avatarFlashState("take-damage");
 
-    this.health = this.health - damage * this.defense;
+    this.health = this.health - (damage * ( 1 - this.defense ));
 
     if (this.health == 0) {
       this.die();
@@ -61,6 +62,12 @@ export default class Fighter {
   die() {
     console.log(this.name, "died");
     this.updateGUI.avatarState("death");
+  }
+
+  resetToBaseStats(stats){
+    stats.forEach(stat => {
+      this[stat] = this.#getBaseStat(stat);
+    });
   }
 
   #getBaseStat(stat){

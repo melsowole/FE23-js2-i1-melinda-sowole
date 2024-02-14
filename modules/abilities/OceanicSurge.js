@@ -1,17 +1,16 @@
 import Ability from "../Ability.js";
 
 export default class OceanicSurge extends Ability {
-  #baseDmg;
   constructor() {
     const name = "Oceanic Surge";
     const description =
       "Yemoja summons a powerful tidal wave that crashes into her opponent.";
     super(name, description);
-    this.#baseDmg = 0.2;
   }
 
   use(fighter) {
-    console.log(`${fighter.name} (${fighter.id}) used ${this.name}`);
-    fighter.attack(this.#baseDmg, fighter.opponent);
+    super.use(fighter);
+
+    fighter.attack(this.Stats.dmg, fighter.opponent);
   }
 }

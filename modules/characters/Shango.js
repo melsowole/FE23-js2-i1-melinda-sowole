@@ -10,7 +10,7 @@ export default class Shango extends Avatar {
     const SHANGO = {
       name: "Shango",
       health: 100,
-      defense: 100,
+      defense: 0,
       atk: 100,
       speed: 100,
       abilities: [

@@ -1,18 +1,16 @@
 import Ability from "../Ability.js";
 
 export default class DivineJudgement extends Ability {
-  #baseDmg;
   constructor() {
-    const name = "Double Chop";
+    const name = "Divine Judgement";
     const description =
       "Obatala unleashes a devastating strike, dealing medium damage with righteous fury.";
     super(name, description);
-    this.#baseDmg = 0.5;
   }
 
   use(fighter) {
-    console.log(`${fighter.name} (${fighter.id}) used ${this.name}`);
+    super.use(fighter);
 
-    fighter.attack(this.#baseDmg, fighter.opponent);
+    fighter.attack(this.Stats.dmg, fighter.opponent);
   }
 }
