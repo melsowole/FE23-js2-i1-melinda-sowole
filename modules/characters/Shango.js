@@ -12,7 +12,7 @@ export default class Shango extends Avatar {
       health: 100,
       defense: 0,
       atk: 100,
-      speed: 100,
+      speed: 110,
       abilities: [
         new DoubleChop(),
         new Justice(),

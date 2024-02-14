@@ -12,7 +12,7 @@ export default class Obatala extends Avatar {
       health: 100,
       defense: 0,
       atk: 100,
-      speed: 100,
+      speed: 90,
       abilities: [
         new DivineJudgement(),
         new PalmWineRitual(),

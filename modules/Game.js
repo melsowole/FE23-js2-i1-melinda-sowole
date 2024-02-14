@@ -55,6 +55,8 @@ export default class Game {
   async #newRound() {
     let playerTurnOrder = this.#getPlayerTurnOrder();
 
+    console.log(playerTurnOrder[0].speed, playerTurnOrder[1].speed);
+
     // first player turn
     const firstPlay = await new Promise((resolve, reject) => {
       this.#turnOfAPlayer(playerTurnOrder[0], resolve, reject);
@@ -121,7 +123,8 @@ export default class Game {
   }
 
   #getPlayerTurnOrder() {
-    return this.players.sort((x, y) => x.speed < y.speed);
+    const turnOrder = this.players.sort((x, y) => y.speed - x.speed);
+    return turnOrder;
   }
 
   #getWinner() {
