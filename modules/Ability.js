@@ -1,3 +1,5 @@
+import Stats from "./Stats.js";
+
 export default class Ability {
   #name;
   #description;
@@ -5,10 +7,12 @@ export default class Ability {
   constructor(name, description, basePower) {
     this.name = name;
     this.description = description;
+
+    this.Stats = Stats[capitalizeAndJoin(name)];
   }
 
-  use() {
-    console.log("used", this.name, "(from Ability.js)");
+  use(fighter) {
+    console.log(`${fighter.name} (${fighter.id}) used ${this.name}`);
   }
 
   // name
@@ -39,4 +43,12 @@ function propertyHasBeenSet(property) {
     throw new Error("Property cannot be changed");
   }
   return false;
+}
+
+function capitalizeAndJoin(name) {
+  let words = name.split(" ");
+  let capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  return capitalizedWords.join("");
 }

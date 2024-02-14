@@ -5,7 +5,7 @@ import { create, createIn } from "./dom.js";
 export default class Interface extends Game {
   constructor(characters) {
     super(characters);
-    this.initialize();
+    // this.initialize();
     this.characterSelection = new CharacterSelection();
   }
 

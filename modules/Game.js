@@ -41,7 +41,6 @@ export default class Game {
 
   async start() {
     while (this.players[0].health > 0 && this.players[1].health > 0) {
-      console.log(this.players[0].health, this.players[1].health);
       await this.#newRound();
     }
 
@@ -60,8 +59,6 @@ export default class Game {
     const firstPlay = await new Promise((resolve, reject) => {
       this.#turnOfAPlayer(playerTurnOrder[0], resolve, reject);
     });
-
-    console.log(firstPlay);
 
     if (firstPlay) {
       const secondPlay = await new Promise((resolve) => {
@@ -118,7 +115,7 @@ export default class Game {
   }
 
   #getPlayerTurnOrder() {
-    return this.players.sort((x, y) => x.speed > y.speed);
+    return this.players.sort((x, y) => x.speed < y.speed);
   }
 
   #getWinner() {

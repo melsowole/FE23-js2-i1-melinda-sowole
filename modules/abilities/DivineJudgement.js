@@ -1,10 +1,10 @@
 import Ability from "../Ability.js";
 
-export default class OceanicSurge extends Ability {
+export default class DivineJudgement extends Ability {
   constructor() {
-    const name = "Oceanic Surge";
+    const name = "Divine Judgement";
     const description =
-      "Yemoja summons a powerful tidal wave that crashes into her opponent.";
+      "Obatala unleashes a devastating strike, dealing medium damage with righteous fury.";
     super(name, description);
   }
 

@@ -1,31 +1,57 @@
 export default class Fighter {
+  #baseAtk;
+  #baseSpeed;
+  #baseDefense;
+  #baseHealth;
+  #currentHealth;
+  #currentSpeed;
+  #currentDefense;
+  #currentAtk;
+  #opponent;
   constructor(id, { name, health, atk, speed, defense, abilities }) {
     this.id = id;
     this.name = name;
-    this.baseHealth = health;
-    this.health = this.baseHealth;
+    this.health = health;
     this.atk = atk;
     this.speed = speed;
     this.defense = defense;
     this.abilities = abilities;
+
   }
 
   attack(damage, reciever) {
-    // add dmg boost
-    this.updateGUI.avatarFlashState("attack");
+    console.log(`${this.name} (${this.id}) dealt ${damage * this.atk} damage`);
     reciever.takeDamage(damage * this.atk);
   }
 
   takeDamage(damage) {
-    // add dmg negation
-    console.log(this.name, "took", damage, "damage");
+    console.log(`${this.name} (${this.id}) took ${damage} damage`);
     this.updateGUI.avatarFlashState("take-damage");
 
-    this.health = this.health - damage * this.defense;
+    this.health = this.health - (damage * ( 1 - this.defense ));
 
     if (this.health == 0) {
       this.die();
     }
+  }
+
+  modifyStats(stats){
+    this.updateGUI.avatarFlashState("modify-stats");
+
+    for (const stat in stats) {
+      const oldStat = this[stat];
+      this[stat] = this.#getBaseStat(stat) * stats[stat];
+
+      const newStat = this[stat];
+
+      const statChange = oldStat - newStat ; 
+      const increaseOrDecrease = statChange < 0 ? "decreased" : "increased";
+
+      console.log(
+        `${this.name}'s (${this.id}) ${stat} was ${increaseOrDecrease} by ${Math.abs(statChange)} points`
+      );
+    }
+
   }
 
   heal(heal) {
@@ -36,6 +62,28 @@ export default class Fighter {
   die() {
     console.log(this.name, "died");
     this.updateGUI.avatarState("death");
+  }
+
+  resetToBaseStats(stats){
+    stats.forEach(stat => {
+      this[stat] = this.#getBaseStat(stat);
+    });
+  }
+
+  #getBaseStat(stat){
+    switch (stat) {
+      case "health":
+        return this.#baseHealth;
+      case "atk":
+        return this.#baseAtk;
+      case "speed":
+        return this.#baseSpeed;
+      case "defense":
+        return this.#baseDefense;
+      default:
+        throw new Error("That base stat does not exist.");
+        break;
+    }
   }
 
   //id
@@ -61,61 +109,65 @@ export default class Fighter {
     this._name = val[0].toUpperCase() + val.slice(1);
   }
 
-  // base health
-  get baseHealth() {
-    return this._baseHealth;
-  }
-
-  set baseHealth(val) {
-    if (this._validatePropertyInput(val, "Base Health", "baseHealth")) {
-      this._baseHealth = val;
-    }
-  }
-
   // current health
   get health() {
-    return this._health;
+    return this.#currentHealth;
   }
 
   set health(val) {
-    this._health = val < 0 ? 0 : val > this.baseHealth ? this.baseHealth : val;
+    if(!this.#currentHealth){
+      this.#baseHealth = val;
+    }
+
+    this.#currentHealth =
+      val < 0 ? 0 : val > this.#baseHealth ? this.#baseHealth : val;
 
     if (this.updateGUI) {
-      this.updateGUI.health(this._health);
+      this.updateGUI.health(this.#currentHealth);
     }
   }
 
   // speed
   get speed() {
-    return this._speed;
+    return this.#currentSpeed;
   }
 
   set speed(val) {
-    this._speed = val;
+    if (!this.#currentSpeed) {
+      this.#baseSpeed = val;
+    }
+    this.#currentSpeed = val;
   }
 
   // atk
 
   get atk() {
-    return this._atk;
+    return this.#currentAtk;
   }
 
   set atk(val) {
-    this._atk = val;
+    if (!this.#currentAtk) {
+      this.#baseAtk = val;
+    }
+    this.#currentAtk = val;
   }
 
   // defense
   get defense() {
-    return this._defense;
+    
+    return this.#currentDefense;
   }
 
   set defense(val) {
-    this._defense = val;
+    if (!this.#currentDefense) {
+      this.#baseDefense = val;
+    }
+    this.#currentDefense = val;
   }
 
   // opponent
   get opponent() {
-    return this._opponent;
+    return this.#opponent;
   }
 
   set opponent(val) {
@@ -123,7 +175,7 @@ export default class Fighter {
       throw new Error("Opponent must be a fighter and cannot be the self");
     }
 
-    this._opponent = val;
+    this.#opponent = val;
   }
 
   // helpers
@@ -145,4 +197,8 @@ export default class Fighter {
       throw new Error("Base stats cannot be changed");
     }
   };
+
+  #capitalize(string){
+    return string[0].toUpperCase() + string.slice(1);
+  }
 }

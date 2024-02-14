@@ -10,9 +10,9 @@ export default class Yemoja extends Avatar {
     const YEMOJA = {
       name: "Yemoja",
       health: 100,
-      defense: 1,
-      atk: 1,
-      speed: 1,
+      defense: 0,
+      atk: 100,
+      speed: 100,
       abilities: [
         new OceanicSurge(),
         new SoothingWaters(),
