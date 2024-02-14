@@ -9,7 +9,7 @@ export default class Yemoja extends Avatar {
   constructor(id) {
     const YEMOJA = {
       name: "Yemoja",
-      health: 100,
+      health: 200,
       defense: 0,
       atk: 100,
       speed: 100,

@@ -1,11 +1,11 @@
 export default class Stats {
   // YEMOJA
   static OceanicSurge = {
-    dmg: 0.2,
+    dmg: 0.3,
   };
 
   static SoothingWaters = {
-    heal: 1.2,
+    heal: 1.4,
   };
 
   static WaveManipulation = {
@@ -13,28 +13,29 @@ export default class Stats {
   };
 
   static MothersWrath = {
-    missRate: 0.8,
-    dmg: 0.6,
+    missRate: 0.7,
+    dmg: 0.9,
   };
 
   // SHANGO
-  static DoubleChop = {
-    dmg: 0.5,
+  static ChopChopChop = {
+    dmg: 0.2,
   };
 
   static Justice = {
-    dmgHigh: 0.5,
+    winChance: 0.3,
+    dmgHigh: 0.8,
     dmgLow: 0.2,
   };
 
   static Intimidate = {
-    speedInc: 1.2,
+    speedDec:0.8,
     atkDec: 0.8,
   };
 
   static Bloodshot = {
     speedDec: 0.8,
-    atkInc: 1.1,
+    atkInc: 1.5,
   };
 
   // OBATALA

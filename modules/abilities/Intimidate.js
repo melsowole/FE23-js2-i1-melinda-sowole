@@ -5,7 +5,7 @@ export default class Intimidate extends Ability {
   constructor() {
     const name = "Intimidate";
     const description =
-      "Shango speaks in thunderous flame, frightening his foe, causing permanently increasing their speed but lowering their attack.";
+      "Shango speaks in thunderous flame, frightening his foe, causing permanently decreasing their speed and attack.";
     super(name, description);
 
   }
@@ -14,7 +14,7 @@ export default class Intimidate extends Ability {
     super.use(fighter);
 
     fighter.opponent.modifyStats({
-      speed: this.Stats.speedInc,
+      speed: this.Stats.speedDec,
       atk: this.Stats.atkDec,
     });
 

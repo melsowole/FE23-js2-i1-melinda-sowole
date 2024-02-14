@@ -21,18 +21,20 @@ export default class Fighter {
 
   attack(damage, reciever) {
     this.updateGUI.message(
-      `${this.name} (${this.id}) dealt ${damage * this.atk} damage`
+      `${this.name} (${this.id}) dealt ${(damage * this.atk).toFixed(0)} damage`
     );
 
-    reciever.takeDamage(damage * this.atk);
+    reciever.takeDamage((damage * this.atk.toFixed(0)));
   }
 
   takeDamage(damage) {
-    this.updateGUI.message(`${this.name} (${this.id}) took ${damage} damage`);
+    this.updateGUI.message(
+      `${this.name} (${this.id}) took ${damage.toFixed(0)} damage`
+    );
 
     this.updateGUI.avatarFlashState("take-damage");
 
-    this.health = this.health - (damage * ( 1 - this.defense ));
+    this.health = (this.health - (damage * ( 1 - this.defense ))).toFixed(0);
 
     if (this.health == 0) {
       this.die();
@@ -46,29 +48,32 @@ export default class Fighter {
       const oldStat = this[stat];
       this[stat] = this.#getBaseStat(stat) * stats[stat];
 
-      const newStat = this[stat];
+      const newStat = this[stat].toFixed(0);
 
       const statChange = oldStat - newStat ; 
-      const increaseOrDecrease = statChange < 0 ? "decreased" : "increased";
+      const increaseOrDecrease = statChange < 0 ? "increased" : "decreased";
+
+      
 
       this.updateGUI.message(
         `${this.name}'s (${
           this.id
-        }) ${stat} was ${increaseOrDecrease} by ${Math.abs(statChange)} points`
+        }) ${stat} was ${increaseOrDecrease} by ${Math.abs(statChange).toFixed(
+          0
+        )} points`
       );
     }
 
   }
 
-  heal(heal) {
+  heal(healPercent) {
     this.updateGUI.avatarFlashState("heal");
-    this.health = this.health + heal;
+    const heal = this.#baseHealth * (healPercent - 1);
+    this.health = (this.health + heal).toFixed(0);
 
     this.updateGUI.message(
-        `${this.name}'s (${
-          this.id
-        }) healed ${heal} health points`
-      );
+      `${this.name}'s (${this.id}) healed ${heal.toFixed(0)} health points`
+    );
     
   }
 
@@ -124,7 +129,8 @@ export default class Fighter {
 
   // current health
   get health() {
-    return this.#currentHealth;
+    //make sure it is a number
+    return this.#currentHealth * 1;
   }
 
   set health(val) {

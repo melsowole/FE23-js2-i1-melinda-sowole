@@ -1,6 +1,6 @@
 import Avatar from "../Avatar.js";
 
-import DoubleChop from "../abilities/DoubleChop.js";
+import ChopChopChop from "../abilities/ChopChopChop.js";
 import Justice from "../abilities/Justice.js";
 import Intimidate from "../abilities/Intimidate.js";
 import Bloodshot from "../abilities/Bloodshot.js";
@@ -10,11 +10,11 @@ export default class Shango extends Avatar {
     const SHANGO = {
       name: "Shango",
       health: 100,
-      defense: 0,
+      defense: 0.7,
       atk: 100,
       speed: 110,
       abilities: [
-        new DoubleChop(),
+        new ChopChopChop(),
         new Justice(),
         new Intimidate(),
         new Bloodshot(),
