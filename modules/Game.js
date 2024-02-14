@@ -45,7 +45,12 @@ export default class Game {
       await this.#newRound();
     }
 
-    alert(this.#getWinner().id + " won!");
+    setTimeout(()=>{
+      const winner = this.#getWinner();
+      alert(`${winner.name} (${winner.id}) won!`);
+      window.location = "/";
+    }, 1200)
+
   }
 
   async #newRound() {
