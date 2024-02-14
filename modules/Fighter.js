@@ -20,12 +20,16 @@ export default class Fighter {
   }
 
   attack(damage, reciever) {
-    console.log(`${this.name} (${this.id}) dealt ${damage * this.atk} damage`);
+    this.updateGUI.message(
+      `${this.name} (${this.id}) dealt ${damage * this.atk} damage`
+    );
+
     reciever.takeDamage(damage * this.atk);
   }
 
   takeDamage(damage) {
-    console.log(`${this.name} (${this.id}) took ${damage} damage`);
+    this.updateGUI.message(`${this.name} (${this.id}) took ${damage} damage`);
+
     this.updateGUI.avatarFlashState("take-damage");
 
     this.health = this.health - (damage * ( 1 - this.defense ));
@@ -47,8 +51,10 @@ export default class Fighter {
       const statChange = oldStat - newStat ; 
       const increaseOrDecrease = statChange < 0 ? "decreased" : "increased";
 
-      console.log(
-        `${this.name}'s (${this.id}) ${stat} was ${increaseOrDecrease} by ${Math.abs(statChange)} points`
+      this.updateGUI.message(
+        `${this.name}'s (${
+          this.id
+        }) ${stat} was ${increaseOrDecrease} by ${Math.abs(statChange)} points`
       );
     }
 
@@ -57,6 +63,13 @@ export default class Fighter {
   heal(heal) {
     this.updateGUI.avatarFlashState("heal");
     this.health = this.health + heal;
+
+    this.updateGUI.message(
+        `${this.name}'s (${
+          this.id
+        }) healed ${heal} health points`
+      );
+    
   }
 
   die() {
