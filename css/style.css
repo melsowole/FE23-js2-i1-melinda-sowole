@@ -5,9 +5,7 @@
 :root{
     --bg: rgb(14, 22, 10);
     --text: white;
-    --col: rgb(45, 118, 57);
-    --col2: rgb(192, 248, 101);
-    --col3: rgb(245, 157, 68);
+    --col: rgb(192, 248, 101);
 
     color: var(--text);
 }
@@ -27,7 +25,7 @@ main{
 }
 
 button{
-    background-color: var(--col);
+    background-color: var(--bg);
     color: var(--text);
     font-weight: 600;
     font-size: 1rem;
